@@ -13,15 +13,15 @@
 #define GLOBAL_WAIT 100
 
 //if you want to change the Y-value the LEDs start on, change this value.  You'll get more saturated colors the lower or higher the value is.
-#define STARTINGY 50.0f
+#define STARTINGY 75.0f
 
 //if you want to change the rate of rotation around the centerpoint, change these values - this is radians per tick.
-#define ROTX 0.0025f
+#define ROTX 0.0175f
 #define ROTY 0.0175f
-#define ROTZ 0.005f
+#define ROTZ 0.0175f
 
 //adjust this depending upon the strip type you are using
-#define STRIPSETTINGS NEO_RGB + NEO_KHZ800
+#define STRIPSETTINGS NEO_GRB + NEO_KHZ800
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, STRIPSETTINGS);
 
