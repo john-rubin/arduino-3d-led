@@ -1,7 +1,7 @@
 #include <BasicLinearAlgebra.h> //dependency of Geometry.h
 #include <Geometry.h> //https://github.com/tomstewart89/Geometry -> used to rotate the LEDs around the cube.
 #include "Adafruit_NeoPixel.h" //https://github.com/adafruit/Adafruit_NeoPixel used for helping us set LED color values.
-#define NUM_LEDS 33 //if you've been given a mirror box by John, don't change this value.  If you're experimenting on your own time, set this to the number of LEDs in your array.
+#define NUM_LEDS 34 //if you've been given a mirror box by John, don't change this value.  If you're experimenting on your own time, set this to the number of LEDs in your array.
 #define PIN 4 //if you've been given a mirror box by John, the data pin is 4.
 
 //if you wish to change the max values possible of each color channel, change this to a number between 0 and 255;
@@ -15,10 +15,10 @@
 //if you want to change the Y-value the LEDs start on, change this value.  You'll get more saturated colors the lower or higher the value is.
 #define STARTINGY 50.0f
 
-//if you want to change the rate of rotation around the centerpoint, change these values
-#define ROTX 0.04f
-#define ROTY 0.09f
-#define ROTZ 0.02f
+//if you want to change the rate of rotation around the centerpoint, change these values - this is radians per tick.
+#define ROTX 0.0025f
+#define ROTY 0.0175f
+#define ROTZ 0.005f
 
 //adjust this depending upon the strip type you are using
 #define STRIPSETTINGS NEO_RGB + NEO_KHZ800
