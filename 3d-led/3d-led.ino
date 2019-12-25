@@ -13,14 +13,17 @@
 #define GLOBAL_WAIT 100
 
 //if you want to change the Y-value the LEDs start on, change this value.  You'll get more saturated colors the lower or higher the value is.
-#define STARTINGY 50
+#define STARTINGY 50.0f
 
 //if you want to change the rate of rotation around the centerpoint, change these values
-#define ROTX 0.07
-#define ROTY 0.07
-#define ROTZ 0.07
+#define ROTX 0.04f
+#define ROTY 0.09f
+#define ROTZ 0.02f
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800);
+//adjust this depending upon the strip type you are using
+#define STRIPSETTINGS NEO_RGB + NEO_KHZ800
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, STRIPSETTINGS);
 
 Point points[NUM_LEDS];
 void setup() {
@@ -95,10 +98,11 @@ void rotatePoints(float rX, float rY, float rZ) {
   Point ptZero = points[0];
   for(uint16_t i=0; i < NUM_LEDS; i++) {
     Point *pt = &points[i];
+    
     Point newPt = r * *pt;
     pt->X() = newPt.X();
-    pt->Z() = newPt.Z();
     pt->Y() = newPt.Y();
+    pt->Z() = newPt.Z();
     
     strip.setPixelColor(i, getPointColor(pt));
   }
