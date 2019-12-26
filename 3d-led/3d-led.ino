@@ -4,10 +4,15 @@
 #define NUM_LEDS 34 //if you've been given a mirror box by John, don't change this value.  If you're experimenting on your own time, set this to the number of LEDs in your array.
 #define PIN 4 //if you've been given a mirror box by John, the data pin is 4.
 
-//if you wish to change the max values possible of each color channel, change this to a number between 0 and 255;
-#define R_CLAMP 255
-#define G_CLAMP 255
-#define B_CLAMP 255
+//if you wish to change the minimum values possible of each color channel, change this to a number between 0 and 255;
+#define R_MIN 0
+#define G_MIN 0
+#define B_MIN 0
+
+//if you wish to change the maximum values possible of each color channel, change this to a number between 0 and 255;
+#define R_MAX 255
+#define G_MAX 255
+#define B_MAX 255
 
 //increase or decrease this dependent on loop speed
 #define GLOBAL_WAIT 100
@@ -110,9 +115,9 @@ void rotatePoints(float rX, float rY, float rZ) {
 }
 
 uint32_t getPointColor(Point *point) {
-  float x = min(R_CLAMP, max(0, point->X()));
-  float y = min(G_CLAMP, max(0, point->Y()));
-  float z = min(B_CLAMP, max(0, point->Z()));
+  float x = min(R_MAX, max(R_MIN, point->X()));
+  float y = min(G_MAX, max(G_MIN, point->Y()));
+  float z = min(B_MAX, max(B_MIN, point->Z()));
   
   return strip.Color(round(x), round(y), round(z));
 }
