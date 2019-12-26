@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <BasicLinearAlgebra.h> //dependency of Geometry.h
 #include <Geometry.h> //https://github.com/tomstewart89/Geometry -> used to rotate the LEDs around the cube.
 #include "Adafruit_NeoPixel.h" //https://github.com/adafruit/Adafruit_NeoPixel used for helping us set LED color values.
@@ -15,15 +16,15 @@
 #define B_MAX 255
 
 //increase or decrease this dependent on loop speed
-#define GLOBAL_WAIT 100
+#define GLOBAL_WAIT 150
 
 //if you want to change the Y-value the LEDs start on, change this value.  You'll get more saturated colors the lower or higher the value is.
 #define STARTINGY 75.0f
 
-//if you want to change the rate of rotation around the centerpoint, change these values - this is radians per tick.
-#define ROTX 0.0175f
-#define ROTY 0.0175f
-#define ROTZ 0.0175f
+//if you want to change the rate of rotation around the centerpoint, change these values - this is degrees per tick.  The below settings rotate the points by (.5, .5, .5) every tick.
+#define ROTX .5f
+#define ROTY .5f
+#define ROTZ .5f
 
 //adjust this depending upon the strip type you are using
 #define STRIPSETTINGS NEO_GRB + NEO_KHZ800
@@ -96,9 +97,9 @@ void loop() {
 
 void rotatePoints(float rX, float rY, float rZ) {
   Rotation r;
-  r.RotateY(rY);
-  r.RotateX(rX);
-  r.RotateZ(rZ);
+  r.RotateY(rY * DEG_TO_RAD);
+  r.RotateX(rX * DEG_TO_RAD);
+  r.RotateZ(rZ * DEG_TO_RAD);
 
   Point ptZero = points[0];
   for(uint16_t i=0; i < NUM_LEDS; i++) {
