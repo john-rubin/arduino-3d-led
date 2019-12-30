@@ -7,24 +7,24 @@
 
 //if you wish to change the minimum values possible of each color channel, change this to a number between 0 and 255;
 #define R_MIN 0
-#define G_MIN 0
-#define B_MIN 0
+#define G_MIN 75
+#define B_MIN 35
 
 //if you wish to change the maximum values possible of each color channel, change this to a number between 0 and 255;
-#define R_MAX 255
+#define R_MAX 75
 #define G_MAX 255
 #define B_MAX 255
 
 //increase or decrease this dependent on loop speed
-#define GLOBAL_WAIT 150
+#define GLOBAL_WAIT 30
 
 //if you want to change the Y-value the LEDs start on, change this value.  You'll get more saturated colors the lower or higher the value is.
 #define STARTINGY 75.0f
 
 //if you want to change the rate of rotation around the centerpoint, change these values - this is degrees per tick.  The below settings rotate the points by (.5, .5, .5) every tick.
-#define ROTX .5f
-#define ROTY .5f
-#define ROTZ .5f
+#define ROTX 1.0f
+#define ROTY 3.5f
+#define ROTZ 1.5f
 
 //adjust this depending upon the strip type you are using
 #define STRIPSETTINGS NEO_GRB + NEO_KHZ800
